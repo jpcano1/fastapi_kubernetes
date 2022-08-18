@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi_app
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: fastapi_app
+  template:
+    metadata:
+      labels:
+        app: fastapi_app
+    spec:
+      containers:
+        - name: fastapi_app_container
+          image: fastapi_kubernetes
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+              protocol: TCP
