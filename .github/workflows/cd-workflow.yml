@@ -43,8 +43,9 @@ jobs:
           docker push $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:$GIT_TAG
 
   deploy-to-google-kubernetes-engine:
-    name: Build and Push to GCP
+    needs: build-push-artifact-registry
+    name: Deploy to Kubernetes Engine
     runs-on: ubuntu-latest
     steps:
       - name: Verify Environment Variables
-        run: echo $IMAGE_NAME
+        run: echo Hola mundo $IMAGE_NAME
