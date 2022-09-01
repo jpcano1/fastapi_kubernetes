@@ -5,7 +5,7 @@ metadata:
   name: fastapi-kubernetes-kustomization
 
 commonLabels:
-  app: fastapi_kubernetes
+  app: fastapi-kubernetes
 
 resources:
   - deployment.yaml

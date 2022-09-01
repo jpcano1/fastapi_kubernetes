@@ -7,14 +7,14 @@ spec:
   replicas: 5
   selector:
     matchLabels:
-      app: fastapi_kubernetes
+      app: fastapi-kubernetes
   template:
     metadata:
       labels:
-        app: fastapi_kubernetes
+        app: fastapi-kubernetes
     spec:
       containers:
-        - name: fastapi_kubernetes_app
+        - name: fastapi-kubernetes-app
           image: $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest
           ports:
             - containerPort: 80
