@@ -3,15 +3,17 @@ name: Build and Push Python Image to Google Cloud Platform
 on:
   push:
     branches: [ master ]
+
+env:
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  IMAGE_NAME: ${{ github.event.repository.name }}
+  REGION: ${{ secrets.REGION }}
+  REPOSITORY: ${{ secrets.REPOSITORY }}
+
 jobs:
   build-push-artifact-registry:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
-    env:
-      PROJECT_ID: ${{ secrets.PROJECT_ID }}
-      IMAGE_NAME: ${{ github.event.repository.name }}
-      REGION: ${{ secrets.REGION }}
-      REPOSITORY: ${{ secrets.REPOSITORY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
