@@ -73,9 +73,11 @@ jobs:
           kustomize-version: 4.5.4
       
       - name: Deploy
+        working-directory: kubernetes
         run: |-
           kustomize edit set image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest"
           cat kustomization.yaml
           kustomize build . | kubectl apply -f -
+          kubectl rollout status deployment/${{ env.IMAGE_NAME }}_deployment
           kubectl get services -o wide
       
