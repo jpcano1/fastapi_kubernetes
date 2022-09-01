@@ -41,3 +41,10 @@ jobs:
           docker tag $IMAGE_NAME:latest $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:$GIT_TAG
           docker push $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest
           docker push $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:$GIT_TAG
+
+  deploy-to-google-kubernetes-engine:
+    name: Build and Push to GCP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify Environment Variables
+        run: echo $IMAGE_NAME

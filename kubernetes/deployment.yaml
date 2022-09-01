@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi_app
+  name: fastapi_kubernetes
 
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: fastapi_app
+      app: fastapi_kubernetes
   template:
     metadata:
       labels:
-        app: fastapi_app
+        app: fastapi_kubernetes
     spec:
       containers:
-        - name: fastapi_app_container
-          image: fastapi_kubernetes
-          imagePullPolicy: Never
+        - name: fastapi_kubernetes_app
+          image: $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest
           ports:
             - containerPort: 80
-              protocol: TCP
+          env:
+            - name: PORT
+              value: "80"
