@@ -78,6 +78,6 @@ jobs:
           kustomize edit set image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest"
           cat kustomization.yaml
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/${{ env.IMAGE_NAME }}_deployment
+          kubectl rollout status deployment/fastapi-kubernetes-deployment
           kubectl get services -o wide
       
