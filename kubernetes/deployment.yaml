@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: fastapi-kubernetes-app
-          image: $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest
+          image: REGION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE_NAME:latest
           ports:
             - containerPort: 80
           env:

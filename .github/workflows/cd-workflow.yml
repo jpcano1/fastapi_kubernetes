@@ -10,6 +10,7 @@ env:
   REGION: ${{ secrets.REGION }}
   REPOSITORY: ${{ secrets.REPOSITORY }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  DEPLOYMENT_NAME: fastapi-kubernetes-deployment
 
 jobs:
   build-push-artifact-registry:
@@ -75,9 +76,8 @@ jobs:
       - name: Deploy
         working-directory: kubernetes
         run: |-
-          kustomize edit set image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest"
+          kustomize edit set image REGION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE_NAME:latest=$REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:latest
           cat kustomization.yaml
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/fastapi-kubernetes-deployment
+          kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
-      
