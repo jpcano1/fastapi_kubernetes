@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi_kubernetes_deployment
+  name: fastapi-kubernetes-deployment
 
 spec:
   replicas: 5
