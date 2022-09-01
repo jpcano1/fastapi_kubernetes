@@ -22,7 +22,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Verify Environment Variables
-        uses: echo Hola Mundo $IMAGE_NAME
+        run: echo Hola Mundo $IMAGE_NAME
 
       - uses: google-github-actions/setup-gcloud@v0
         with:
